@@ -29,9 +29,9 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
         clients
                 .inMemory()
                 .withClient("clientapp").secret(passwordEncoder.encode("123456"))
-                .authorizedGrantTypes("password", "authorization_code", "refresh_token")
+                .authorizedGrantTypes("password", "client_credentials", "refresh_token")
                 .authorities("READ_ONLY_CLIENT")
-                .scopes("read_profile_info")
+                .scopes("read", "write")
                 .resourceIds("oauth2-resource")
                 .redirectUris("http://localhost:8080/login")
                 .accessTokenValiditySeconds(120)
